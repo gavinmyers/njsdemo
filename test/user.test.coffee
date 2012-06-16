@@ -1,3 +1,4 @@
+net = require "../src/net"
 userModule = require "../src/user"
 User = userModule.class
 request = require "request"
@@ -20,14 +21,12 @@ request.get "http://127.0.0.1:8008/user", (err,res,body) ->
   if !res? then throw new Error "no res"
   if 200 != res.statusCode  then throw new Error "no user"
   if !obj? || !obj.id? then throw new Error "invalid user"
-  process.exit()
 
 userModule.get = (req,res) ->
   u = new User -256,'ooo-eee-ooo'
   res.write JSON.stringify u
   res.end ""
 
-  
 request.get "http://127.0.0.1:8008/user", (err,res,body) ->
   obj = JSON.parse body
   if obj.id != -256 then throw new Error "user get override failed"
