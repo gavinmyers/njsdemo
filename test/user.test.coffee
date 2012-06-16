@@ -1,6 +1,5 @@
-net = require "../src/net"
 userModule = require "../src/user"
-User = userModule.class
+User = userModule.User
 request = require "request"
 console.log '\u001B[2J\u001B[0;0f'
 

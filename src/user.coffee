@@ -1,6 +1,6 @@
 net = require "./net"
 
-net.app.get '/user', exports.get = (req,res) ->
+net.app.get '/user', (req,res) ->
   exports.get req,res
 
 exports.get = (req,res) ->
@@ -8,5 +8,5 @@ exports.get = (req,res) ->
   res.write JSON.stringify user
   res.end ""
 
-exports.class = class User
+exports.User = class User
   constructor: (@id, @token) ->
